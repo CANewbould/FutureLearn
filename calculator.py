@@ -1,6 +1,8 @@
-#calculator2.py
+#calculator.py
 
 # Python Program to Make a Simple Calculator
+
+# This is Version 3, to include the try statements
 
 def multiplication(num1, num2):
    return num1 * num2
