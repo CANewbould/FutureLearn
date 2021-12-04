@@ -4,9 +4,10 @@
 
 # Author: C A Newbould
 
-# Version 2
+# Version 3
 
-## Added some try clauses
+## Revised invalid return value
+## added another try clause
 
 print('\n\nThis app runs a simple calculator')
 print('----------------------------------\n')
@@ -52,20 +53,23 @@ def ask():
                     break # Version 2
                 except ZeroDivisionError: # Version 2
                     print("!!!Zero divisor!!!", end = ' ') # Version 2
-                    no2 = float(input('New divisor: ')) # Version 2
-                except ValueError: # Version 2
-                    print(invalid) # Version 2
+                    while True: # Version 3
+                        try: # Version 3
+                            no2 = float(input('New divisor: ')) # Version 2
+                            break # Version 3
+                        except ValueError: # Version 2
+                            print(invalid) # Version 2
             return n
     elif op == 'x':
         return op # Version 2
     else:
-        print("!!! INVALID OP CODE !!!")
-        return 888
+        print(invalid) # Version 2
+        return 'i' # Version 3
 
 # Execution
 result = ask()
 while result != 'x': # Version 2
-    if result != 888:
+    if result != 'i': # Version 3
         print("The result is: %g" % result)
     result = ask()
 
