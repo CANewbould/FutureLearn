@@ -4,10 +4,18 @@
 
 # Author: C A Newbould
 
-# Version 3
+# Version 4
 
-## Revised invalid return value
-## added another try clause
+## added clear screen into - thanks to https://codecap.org/
+
+import os # Version 4
+import platform # Version 4
+
+if(platform.system().lower() == "windows"): # Version 4
+    cmdtorun = 'cls' # Version 4
+else: # Version 4
+    cmdtorun = 'clear' # Version 4
+os.system(cmdtorun) # Version 4
 
 print('\n\nThis app runs a simple calculator')
 print('----------------------------------\n')
