@@ -1,8 +1,8 @@
 # primes.py
 
-# Version 2
+# Version 3
 
-primes = []
+primes = [2] # Version 3
 
 print("\n\nThis app calculates all prime numbers up to a user-defined limit")
 print("----------------------------------------------------------------")
@@ -19,13 +19,12 @@ def is_prime(n):
         return True
 
 # Execution
-for i in range(2,limit):
+for i in range(3,limit): # Version 3
     if is_prime(i):
         primes.append(i)
 
-print('\n*** Prime numbers up to', limit,'***')
+print('\n*** Prime numbers up to', limit,'***\n') # Version 3
 
-for i in primes:
-    print(i)
-
-
+# removed in Version 3: for i in primes:
+    # removed in Version 3: print(i)
+print (', '.join(map(str,primes))) # Version 3 - source Reactgo for idea
