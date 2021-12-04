@@ -1,8 +1,8 @@
 # primes.py
 
-# Version 1
+# Version 2
 
-primes = [2]
+primes = []
 
 print("\n\nThis app calculates all prime numbers up to a user-defined limit")
 print("----------------------------------------------------------------")
@@ -13,13 +13,13 @@ def is_prime(n):
     if n <= 1:
         return False
     else:
-        for i in range(2, n):
+        for i in primes: # Version 2
             if n % i == 0:
                 return False
         return True
 
 # Execution
-for i in range(3,limit):
+for i in range(2,limit):
     if is_prime(i):
         primes.append(i)
 
