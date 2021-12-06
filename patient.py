@@ -1,5 +1,11 @@
 # patient.py
 
+# Author: C A Newbould
+
+# Version 2
+
+# Split class from 'main'
+
 class Patient:
     'Patient class for analysing various readings'
     def __init__(self, name) -> None:
@@ -22,11 +28,3 @@ class Patient:
         else:
             return "No"
 
-def run(name):
-    p = Patient(name)
-    p.data_input()
-
-# main
-patients = ['John', 'Jane', 'Clement']
-for i in patients:
-    run(i)
