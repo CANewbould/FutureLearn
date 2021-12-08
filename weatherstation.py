@@ -2,9 +2,16 @@
  
 # Author: C A Newbould
 
-# Version 1
+# Version 2
+# defined the words to be output for temperatures as a list
+# used the 'bisect' module -- thanks to stackoverflow - to create my one-liner
 
 from place import Place
+
+import bisect
+
+temps = ['chilly','cold','cool','mild','warm']
+winds = ['calm', 'quite calm', 'breezy', 'windy']
 
 def noLF(text):
     print(text, end = "")
@@ -19,28 +26,14 @@ class WeatherStation(Place):
         self.wind = float(input('Current wind speed (mph): '))
     def report(self):
         noLF('It is ')
-        if self.temperature >= 20:
-            print("warm", end = ", ")
-        elif self.temperature in range(15,20):
-            print('mild', end = ", ")
-        elif self.temperature in range(10,15):
-            print('cool', end = ", ")
-        elif self.temperature in range(5,10):
-            print('cold', end = ", ")
-        else:
-            print("chilly", end = ", ")
+        word = temps[bisect.bisect_left([5,10,15,20], self.temperature)]
+        print(word, end = ", ")
         if self.rain > 0:
             noLF('wet')
         else:
             noLF('dry')
         print(' and ',end = "")
-        if self.wind > 20:
-            noLF('windy ')
-        elif self.wind in range(10,20):
-            noLF('breezy ')
-        elif self.wind in range(5,10):
-            noLF('quite calm ')
-        else:
-            noLF('calm ')
+        wnd = winds[bisect.bisect_left([5,10,20], self.wind)]
+        print(wnd, end = " ")
         print ("in " + self.name + '.')
    
