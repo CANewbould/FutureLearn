@@ -3,18 +3,11 @@
 # Author: C A Newbould
 
 # Version 2
-# defined the words to be output for temperatures as a list
-# used the 'bisect' module -- thanks to stackoverflow - to create my one-liner
+# stripped all but essentials - just readings
+# added testing routine
+# and (commented-out) test case
 
 from place import Place
-
-import bisect
-
-temps = ['chilly','cold','cool','mild','warm']
-winds = ['calm', 'quite calm', 'breezy', 'windy']
-
-def noLF(text):
-    print(text, end = "")
 
 class WeatherStation(Place):
     'WeatherStation class for analysing various readings'
@@ -24,16 +17,10 @@ class WeatherStation(Place):
         self.temperature = float(input("Temperature now(C): "))
         self.rain = float(input('Rainfall in last hour (mm): '))
         self.wind = float(input('Current wind speed (mph): '))
-    def report(self):
-        noLF('It is ')
-        word = temps[bisect.bisect_left([5,10,15,20], self.temperature)]
-        print(word, end = ", ")
-        if self.rain > 0:
-            noLF('wet')
-        else:
-            noLF('dry')
-        print(' and ',end = "")
-        wnd = winds[bisect.bisect_left([5,10,20], self.wind)]
-        print(wnd, end = " ")
-        print ("in " + self.name + '.')
-   
+    def in_words(self):
+        print(f'It is {self.temperature}C, {self.rain:.0f}mm and {self.wind:.0f}mph in {self.name}.')
+
+# test
+#Arnside = WeatherStation("Arnside", 54.203808, -2.832755)
+#Arnside.readings()
+#Arnside.in_words()
