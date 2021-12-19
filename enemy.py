@@ -1,17 +1,17 @@
 # enemy.py
 
-# Version 1
+# Version 2
 
-# Brief with a few added features:
-# Checks on lives left in both 'attack' and 'checkLife'
+# added a default value to the constructor
+# changed 'attack' to have  different messages for different classes, with default
 
 class Enemy:
-    def __init__ (self):
-        self.lives = 3
-    def attack(self):
+    def __init__ (self, lives = 3):
+        self.lives = lives
+    def attack(self, message = "ouch!"):
         if self.lives >= 1:
             self.lives -= 1
-            print("ouch!")
+            print(message)
         else:
             print("No Lives left. ", end = "")
     def checkLife(self):
@@ -21,23 +21,3 @@ class Enemy:
             print(f'{self.lives} life left')
         else:
             print(f'{self.lives} lives left')
-
-enemy1 = Enemy()
-enemy1.attack()
-enemy1.checkLife()
-enemy1 = Enemy()
-enemy2 = Enemy()
-enemy3 = Enemy()
-enemy1.attack()
-enemy1.checkLife()
-enemy2.checkLife()
-enemy2.attack()
-enemy2.checkLife()
-enemy2.attack()
-enemy2.checkLife()
-enemy2.attack()
-enemy2.checkLife()
-enemy2.attack()
-enemy2.checkLife()
-enemy3.attack()
-enemy3.checkLife()
